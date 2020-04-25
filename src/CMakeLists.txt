@@ -1,0 +1,4 @@
+add_subdirectory(application)
+add_subdirectory(database)
+add_subdirectory(framework)
+add_subdirectory(logger)
