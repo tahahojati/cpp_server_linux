@@ -52,3 +52,7 @@ TODO:
   How to compile the lib with c and project with cpp
   get the routing done
   write the main website
+  
+Application will have a router, a list of controllers, each controller handles a single path. So the application will
+ create a router with all the controllers, and numbers.  When a route matches, application will create a new
+  controller and call its post/get/etc method.   
