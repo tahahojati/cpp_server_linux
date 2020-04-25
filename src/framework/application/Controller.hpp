@@ -1,0 +1,10 @@
+#ifndef CPP_SERVER_LINUX_CONTROLLER_HPP
+#define CPP_SERVER_LINUX_CONTROLLER_HPP
+
+
+class Controller {
+
+};
+
+
+#endif //CPP_SERVER_LINUX_CONTROLLER_HPP

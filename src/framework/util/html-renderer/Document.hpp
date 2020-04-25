@@ -1,0 +1,10 @@
+#ifndef CPP_SERVER_LINUX_DOCUMENT_HPP
+#define CPP_SERVER_LINUX_DOCUMENT_HPP
+
+
+class Document {
+
+};
+
+
+#endif //CPP_SERVER_LINUX_DOCUMENT_HPP

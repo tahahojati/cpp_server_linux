@@ -1,0 +1,10 @@
+#ifndef CPP_SERVER_LINUX_TODO_HPP
+#define CPP_SERVER_LINUX_TODO_HPP
+
+
+class Todo {
+
+};
+
+
+#endif //CPP_SERVER_LINUX_TODO_HPP

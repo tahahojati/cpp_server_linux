@@ -1,0 +1,10 @@
+#ifndef CPP_SERVER_LINUX_VIEW_HPP
+#define CPP_SERVER_LINUX_VIEW_HPP
+
+
+class View {
+
+};
+
+
+#endif //CPP_SERVER_LINUX_VIEW_HPP

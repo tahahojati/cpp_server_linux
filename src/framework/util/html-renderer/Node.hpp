@@ -1,0 +1,10 @@
+#ifndef CPP_SERVER_LINUX_NODE_HPP
+#define CPP_SERVER_LINUX_NODE_HPP
+
+
+class Node {
+
+};
+
+
+#endif //CPP_SERVER_LINUX_NODE_HPP

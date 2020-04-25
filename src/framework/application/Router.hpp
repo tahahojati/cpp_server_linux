@@ -1,0 +1,10 @@
+#ifndef CPP_SERVER_LINUX_ROUTER_HPP
+#define CPP_SERVER_LINUX_ROUTER_HPP
+
+
+class Router {
+
+};
+
+
+#endif //CPP_SERVER_LINUX_ROUTER_HPP

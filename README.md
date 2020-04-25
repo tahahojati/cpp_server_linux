@@ -26,8 +26,29 @@ Ok we want to do process management, threading, memory.
   we have several modules though like main web server, web code, database, logger, etc.  So I think the .h files should in general
   be put next to the .cpp files. Ok I like that idea. Now how do we write the cmake? Well let's first code then we figure that out. 
   
-  Wrap the http-parser class. 
+  So
+  We have multiple modules. Each running on their own threads and having their own resources etc.
+  ForFramework:
+    FrontController,
+    Router,
+    Request, 
+    Response,
+    ThreadPooling,
+    Qing,
+    Tasks, 
+    No response decorators, etc.. 
+    callbacks, 
+    settings document,
+    param_supply
+    error handling. 
+    error separation between threads. //i.e. server cannot go down. 
+    Classes to extend in our application.
+    caching of database
+    html renderer
+    CPU monitoring
+    
   
 TODO:
   How to compile the lib with c and project with cpp
-  
+  get the routing done
+  write the main website

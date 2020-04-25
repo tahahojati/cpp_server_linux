@@ -1,0 +1,10 @@
+#ifndef CPP_SERVER_LINUX_SERVER_HPP
+#define CPP_SERVER_LINUX_SERVER_HPP
+
+
+class Server {
+
+};
+
+
+#endif //CPP_SERVER_LINUX_SERVER_HPP
