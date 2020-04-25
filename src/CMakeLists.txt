@@ -1,3 +1,4 @@
+include_directories(../Library)
 add_subdirectory(application)
 add_subdirectory(database)
 add_subdirectory(framework)
