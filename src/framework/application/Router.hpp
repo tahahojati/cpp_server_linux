@@ -3,6 +3,7 @@
 #include <r3/r3.hpp>
 #include <unique_ptr>
 #include <string>
+#include <unordered_set>
 // create a router tree with 10 children capacity (this capacity can grow dynamically)
 R3Node *n = r3_tree_create(10);
 
@@ -56,26 +57,35 @@ namespace framework {
     namespace application {
         class Router {
         public:
-            struct request {
-
-            }
             struct match {
                 bool match = false;
-
+                std::unordered_set<std::string, std::string> params{};
             }
             constexpr Router();
-            constexpr Router(const std::initializer_list<class _Ep> routes);
+            constexpr Router(const std::initializer_list<std::pair<std::string, int>> routes);
             Router(const Router&) = delete;
             Router(Router&&) = delete;
             Router&operator=(const Router&) = delete;
             Router&operator=(Router&&) = delete;
-            ~Router();
+            constexpr ~Router();
 
-            void addRoute(string route);
-
+            void addRoute(string route, int code);
+            /* TODO: brilliant idea: cpp templating and constexpr and macros let us do compile time stuff that leads
+             * to code that is alot faster because: branching and function call and perhaps even a lot of computation
+            // has been avoided (e.g. imagine calculating m! in compile time!).  They have the ability that a
+            // constexpr function will be replaced by its result if its argument is also constexpr.
+            // So I think we need to write that for js or python. They have eval functions that let you execute code
+            // on fly. We just need to track all symbols that are known in compile time and the effect they have on
+            // each other. Then we use eval to calculate all constexpr values and replace them. We can even inline
+            // functions.
+             */
 
             void insert_path(const std::string path, void* data); //TODO
             int compile(char** errstr = NULL); //TODO
+
+            match matches(std::string route){
+
+            }
 
 
             void dump(int level) const {
@@ -113,11 +123,6 @@ namespace framework {
             Route match_route(MatchEntry& entry) const {
                 return r3_tree_match_route(get(), entry.get());
             }
-
-        private:
-            Tree(const Tree&);
-            Tree& operator =(const Tree&);
-        };
 
         private:
             std::unique_ptr<r3::Tree> _tree
