@@ -8,7 +8,7 @@
 namespace framework{
     namespace application {
         abstract class Application {
-            virtual void handleRequest(const http::HttpRequest& req) = 0;
+            virtual http::HttpResponse& dispatchRequest(const http::HttpRequest& req) = 0;
         };
 
         /*
@@ -29,7 +29,7 @@ namespace framework{
             constexpr RouterApplication():
                 _router{{Controller::path, std::make_index_sequence<sizeof...(Controller)>}, ...} {}
 
-            constexpr HttpResponse handleRequest&(const http::HttpRequest& req) override {
+            constexpr http::HttpResponse& dispatchRequest(const http::HttpRequest& req) override {
                  Router::match m = _router.match(req.getUrl());
                  return _handleRequestImpl<m.routeIndex>(req, m.params);
             };
@@ -55,6 +55,50 @@ namespace framework{
             }
             constexpr Router _router;
         };
+
+
+        /*
+         * Correct implementation bellow
+         * #include <iostream>
+#include <string>
+#include <utility>
+using namespace std;
+struct Router {
+  void add(string str, size_t i){}
+};
+
+struct Base {
+  static const string d;
+};
+const string Base::d = string ("");
+template <size_t i, class first, class... cls>
+void _addToRouter (Router &r) {
+  r.add(first::d, i);
+  _addToRouter<i+1, cls...> (r);
+}
+template <size_t i>
+void _addToRouter(){}
+
+template<class... cls>
+void addToRouter(){
+  _addToRouter<0, cls...>();
+}
+
+template<class... cls>
+Base* (* factory[sizeof...(cls)])() = {[](){return dynamic_cast<Base*>(new cls);}...};
+
+template<class... cls>
+struct RouterApp {
+  Router r;
+  static const Base* (*controllerFactory[sizeof...(cls)])() = factory<cls...>;
+//  RouterApp(){
+//    addToRouter<cls...>(r);
+//  }
+  RouterApp(): r{{cls::d, std::make_index_sequence<sizeof...(cls)>()}...} {}
+};
+
+
+         */
     }
 }
 
