@@ -59,6 +59,7 @@ namespace framework {
         public:
             struct match {
                 bool match = false;
+                int code;
                 std::unordered_set<std::string, std::string> params{};
             }
             constexpr Router();

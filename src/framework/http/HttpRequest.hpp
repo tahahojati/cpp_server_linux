@@ -5,6 +5,8 @@
 #define DEFINE_DATA_CB(name) int name(http_parser* parser, const char *at, size_t length)
 #define DEFINE_HTTP_CB(name) int name(http_parser* parser)
 #define StrMap std::unordered_map<std::string, std::string>
+#define DataMap std::unordered_map<std::string, std::unique_ptr<void, void(*)(void const*)>>
+
 namespace framework {
     namespace http {
         typedef void (*logger_p)(int, std::string);
@@ -15,18 +17,19 @@ namespace framework {
 
             const StrMap &getHeaders() const;
 
-            const StrMap &getData() const;
-
             http_method getMethod() const;
 
             const string &getBody() const;
 
             const string &getUrl() const;
 
+            DataMap data;
+
         private:
             HttpRequest() = default; //use parseString to create requests.
 
-            StrMap _headers{}, _data{};
+            StrMap _headers{};
+
             std::string _body{""}, _url{""};
             http_method _method;
             http_errno _error;

@@ -46,10 +46,6 @@ namespace framework {
                 return _headers;
             }
 
-            const StrMap &HttpRequest::getData() const {
-                return _data;
-            }
-
             http_method HttpRequest::getMethod() const {
                 return _method;
             }

@@ -46,12 +46,16 @@ Ok we want to do process management, threading, memory.
     caching of database
     html renderer
     CPU monitoring
+   
     
   
 TODO:
   How to compile the lib with c and project with cpp
   get the routing done
   write the main website
+  
+  404 handling: abstract controller must have defined all the methods such that they report method missing to the
+   application. Application must then dispatch the correct 
   
 Application will have a router, a list of controllers, each controller handles a single path. So the application will
  create a router with all the controllers, and numbers.  When a route matches, application will create a new
