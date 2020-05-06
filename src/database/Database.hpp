@@ -8,9 +8,10 @@
 #include <deqeue>
 #include <utility>
 #include <atomic>
+#include <util/MultiCore>
 
 namespace database{
-    class DB{
+    class DB: public util::MultiCore{
     private:
         enum class task {contains, set, get, del, end};
         std::atomic_flag _running;
